@@ -51,8 +51,19 @@ namespace EFCoreCommon.Model
             modelBuilder.Entity<Patient>().HasQueryFilter(p => p.active);
             modelBuilder.Entity<Appointment>().HasQueryFilter(p => p.active);
             modelBuilder.Entity<AppointmentType>().HasQueryFilter(p => p.active);
+            modelBuilder.Entity<AppointmentType>()
+                .Property(f => f.id)
+                .ValueGeneratedOnAdd();
 
-
+            var arrAppointmentTypes = new AppointmentType[]
+            {
+                new AppointmentType(){id=1,name="Consulta General"},
+                new AppointmentType(){id=2,name="Odontologia"},
+                new AppointmentType(){id=3,name="Pediatria"},
+                new AppointmentType(){id=4,name="Neurologia"},
+                new AppointmentType(){id=5,name="Ortopedia"},
+            };
+            modelBuilder.Entity<AppointmentType>().HasData(arrAppointmentTypes);
 
 
         }

@@ -4,14 +4,16 @@ using EFCoreCommon.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(MedAppointmentsContext))]
-    partial class MedAppointmentsContextModelSnapshot : ModelSnapshot
+    [Migration("20200721155739_v1.0.0.0")]
+    partial class v1000
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,38 +65,6 @@ namespace DAL.Migrations
                     b.HasKey("id");
 
                     b.ToTable("appointmentTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            id = 1,
-                            active = true,
-                            name = "Consulta General"
-                        },
-                        new
-                        {
-                            id = 2,
-                            active = true,
-                            name = "Odontologia"
-                        },
-                        new
-                        {
-                            id = 3,
-                            active = true,
-                            name = "Pediatria"
-                        },
-                        new
-                        {
-                            id = 4,
-                            active = true,
-                            name = "Neurologia"
-                        },
-                        new
-                        {
-                            id = 5,
-                            active = true,
-                            name = "Ortopedia"
-                        });
                 });
 
             modelBuilder.Entity("DAL.model.Patient", b =>
